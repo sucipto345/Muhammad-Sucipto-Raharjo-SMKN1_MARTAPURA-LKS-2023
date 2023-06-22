@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      #first {
+        background-image: url(/IMG/math-in-js.png);
+        background-repeat: no-repeat;
+        width: 850px;
+        height: 850px;
+      }
+      #first,
+      #second {
+        width: 850px;
+        height: 850px;
+        margin: 5px;
+        float: left;
+      }
+      #second .piece{
+        background-image: url(/IMG/math-in-js.png);
+        background-repeat: no-repeat;
+        border: 2px solid black;
+        background-size: 850px 550px;
+        margin: 2px;
+        position: relative;
+        width: 100px;
+        height: 100px;
+      }
+      #second .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .fade-out {
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
+      }
+      .fade-out:hover {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="first"></div>
+    <div id="second"></div>
+    <script>
+      $(document).ready(function (){
+
+        var pieces = "";
+        for (var i = 0, vertical = 0; i < 3; i++, vertical -= 100) {
+          var divContent = "";
+          for (var j = 0, horizontal = 0; j < 5; j++, horizontal -= 100) {
+            divContent +=
+            "<div class='fade-out piece' style='background-position:" + horizontal + "px " + vertical + "px'></div>";
+          }
+          pieces += "<div class='row'>" + divContent + "</div>";
+        }
+        $("#second").append(pieces);
+      });
+    </script>
+  </body>
+</html>
+``

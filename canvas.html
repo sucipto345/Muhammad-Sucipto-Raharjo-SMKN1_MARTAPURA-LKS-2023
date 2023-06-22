@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas-container{
+            background-color: black;
+            height: 320px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="canvas" width="400px" height="320px"></canvas>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            let x = 50;
+            let y = canvas.height / 2;
+            const radius = 25;
+            let speedX = 2;
+            let speedY = 2;
+
+            function drawCircle() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                ctx.fillStyle = '#19a68c';
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function update() {
+                x += speedX;
+                y += speedY;
+
+                if (x + radius > canvas.width || x - radius < 0){
+                    speedX *= -1;
+                }
+                if (y + radius > canvas.height || y - radius < 0){
+                    speedY *= -1;
+                }
+
+                drawCircle();
+
+                requestAnimationFrame(update);
+            }
+            update();
+        });
+    </script>
+</body>
+</html>

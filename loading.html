@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        section {
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            background-color: #fff;
+            justify-content: center;
+            display: flex;
+        }
+        section .loader{
+            position: relative;
+            animation: rotate 1s infinite linear;
+            width: 25px;
+            height: 25px;
+        }
+        .loader .ball {
+            position: absolute;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+        }
+        .loader .upper {
+            top: -25px;
+            left: 0;
+            background-color: #000;
+            animation: move-upper 1s infinite linear;
+        }
+        .loader .left {
+            top: 0;
+            left:  -25px;
+            background-color: #000;
+            animation: move-left 1s infinite linear;
+        }
+        .loader .lower {
+            bottom: -25px;
+            right: 0;
+            background-color: #000;
+            animation: move-lower 1s infinite linear;
+        }
+        .loader .right {
+            right: -25px;
+            bottom: 0;
+            background-color: #000;
+            animation: move-right 1s infinite linear;
+        }
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes move-upper {
+            0%{
+                top: -25px;
+                left: 0;
+            }
+            50%{
+                top: 0;
+                left: 0;
+            }
+            100%{
+                top:-25px;
+                left:0;
+            }
+        }
+        @keyframes move-left {
+            0%{
+                top: 0;
+                left: -25px;
+            }
+            50%{
+                top: 0;
+                left: 0;
+            }
+            100%{
+                top: 0;
+                left: -25px;
+            }
+        }
+        @keyframes move-lower {
+            0%{
+                bottom: -25px;
+                right: 0;
+            }
+            50%{
+                bottom: 0;
+                right: 0;
+            }
+            100%{
+                bottom:-25px;
+                right:0;
+            }
+        }
+        @keyframes move-right {
+            0%{
+                bottom: 0;
+                right: -25px;
+            }
+            50%{
+                bottom: 0;
+                right: 0;
+            }
+            100%{
+                bottom: 0;
+                right: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="loader">
+            <div class="upper ball"></div>
+            <div class="left ball"></div>
+            <div class="lower ball"></div>
+            <div class="right ball"></div>
+        </div>
+    </section>
+</body>
+</html>

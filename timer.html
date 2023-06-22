@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #timer{
+            font-family: sans-serif;
+            font-size: 72px;
+            text-align: center;
+            letter-spacing: -3px;
+            color: #fff;
+            background-color: #000;
+            padding: 10px;
+        }
+        .btn-container{
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .btn {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">000:00</div>
+        <div class="btn-container">
+            <div class="btn" style="background-color: red;" onclick="startTimer()">Start</div>
+            <div class="btn" style="background-color: green;" onclick="stopTimer()">Stop</div>
+            <div class="btn" style="background-color: blue;" onclick="resetTimer()">Reset</div>
+        </div>
+<script>
+    var timerInterval;
+    var seconds = 0;
+    var centiseconds = 0;
+
+    function startTimer(){
+        if (!timerInterval) {
+            timerInterval = setInterval(updateTimer, 10);
+        }
+    }
+
+    function stopTimer(){
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function resetTimer(){
+        stopTimer();
+        seconds = 0;
+        centiseconds = 0;
+        updateTimer();
+    }
+
+    function updateTimer(){
+        centiseconds++;
+        if (centiseconds >=100){
+            centiseconds = 0;
+            seconds++;
+        }
+        var formattedTime = padNumber(seconds, 3) + ":" + padNumber(centiseconds, 2);
+        document.getElementById("timer").innerHTML = formattedTime;
+    }
+
+    function padNumber(num, length) {
+        var paddedNumber = num.toString();
+        while (paddedNumber.length <length) {
+            paddedNumber = "0" + paddedNumber;
+        }
+        return paddedNumber;
+    }
+</script>
+</body>
+</html>
